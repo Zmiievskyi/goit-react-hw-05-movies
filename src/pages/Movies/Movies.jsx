@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
-import {
-  Routes,
-  Outlet,
-  useSearchParams,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
-import { Link, Section } from '../Home/HomeStyled';
+// import { Box } from '@mui/system';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { Link } from '../Home/HomeStyled';
 import { ThemoviApi } from 'components/ThemoviApi/ThemoviApi';
 
 export const Movies = () => {
@@ -16,13 +10,11 @@ export const Movies = () => {
 
   const location = useLocation();
   const movieName = params.get('query') ?? '';
-//   console.log(location);
-//   console.log(movieName);
 
   useEffect(() => {
-      if (movieName === '') {
-        return;
-      }
+    if (movieName === '') {
+      return;
+    }
     try {
       const movieSearch = async () => {
         const movie = await ThemoviApi.searchMovie(movieName);
@@ -59,7 +51,6 @@ export const Movies = () => {
           ))}
         </ul>
       )}
-      {/* <Outlet/> */}
     </>
   );
 };

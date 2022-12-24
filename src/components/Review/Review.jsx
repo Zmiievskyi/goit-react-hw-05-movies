@@ -22,7 +22,7 @@ export const Review = () => {
   return (
     <ul>
       {review.map(item => (
-        <li>
+        <li key={item.id}>
           {item.author}
           <p>{item.content}</p>
         </li>

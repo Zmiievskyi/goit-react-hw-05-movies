@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, NavLink, useParams } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 import { ThemoviApi } from 'components/ThemoviApi/ThemoviApi';
 
 export const Cast = () => {
   const [acters, setActers] = useState([]);
   const { movieId } = useParams();
+console.log(acters);
 
   useEffect(() => {
     try {
@@ -23,16 +23,17 @@ export const Cast = () => {
 
   return (
     <ul>
-      {acters.length > 0 && acters.map(item => (
-        <li>
-          <img
-            src={IMG_URL + item.profile_path}
-            alt={item.character}
-            width="100px"
-          />
-          <p>{item.original_name}</p>
-        </li>
-      ))}
+      {acters.length > 0 &&
+        acters.map(item => (
+          <li key={item.id}>
+            <img
+              src={IMG_URL + item.profile_path}
+              alt={item.character}
+              width="100px"
+            />
+            <p>{item.original_name}</p>
+          </li>
+        ))}
     </ul>
   );
 };
